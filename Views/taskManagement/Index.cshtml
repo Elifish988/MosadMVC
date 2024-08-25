@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MosadMVC.Models.MissionsMVC>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<head>
+    <meta http-equiv="refresh" content="2">
+</head>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Agent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Target)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Executiontime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Target)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Executiontime)
+            </td>
+            <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="connect" asp-route-id="@item.Id">connect</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

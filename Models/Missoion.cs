@@ -4,7 +4,7 @@ namespace MosadMVC.Models
 {
     public class Missoion
     {
-        [Key]
+        
         public int Id { get; set; }
         public int AgentId { get; set; }
         public int TargetId { get; set; }
