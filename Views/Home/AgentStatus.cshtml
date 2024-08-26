@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MosadMVC.Models.AgentStatusMVC>
+
+@{
+    ViewData["Title"] = "AgentStatus";
+}
+
+<h1>AgentStatus</h1>
+<head>
+    <meta http-equiv="refresh" content="2">
+</head>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Locition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mission)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.timeToDo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountKills)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locition)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            <td>
+                    <a asp-action="GetMissionsByID" asp-route-id="@item.mission">GetMissionsByID</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.timeToDo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountKills)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
