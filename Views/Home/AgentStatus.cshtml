@@ -5,9 +5,7 @@
 }
 
 <h1>AgentStatus</h1>
-<head>
-    <meta http-equiv="refresh" content="2">
-</head>
+
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -49,7 +47,10 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
             <td>
-                    <a asp-action="GetMissionsByID" asp-route-id="@item.mission">GetMissionsByID</a>
+                    @if (@item.mission != null)
+                    {
+                        <a asp-action="GetMissionsByID" asp-route-id="@item.mission">GetMissionsByID</a>
+                    }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.timeToDo)
@@ -57,11 +58,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CountKills)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            
         </tr>
 }
     </tbody>

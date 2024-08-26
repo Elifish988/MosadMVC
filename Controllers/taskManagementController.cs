@@ -17,7 +17,7 @@ namespace MosadMVC.Controllers
         // הצגת כל המשימות להצעה
         public async Task<IActionResult> Index()
         {
-            var responseString = await _httpClient.GetStringAsync("http://localhost:5094/api/missions/GetOptions");
+            var responseString = await _httpClient.GetStringAsync("http://localhost:5094/missions/GetOptions");
             List<MissionsMVC> missionsMVCs = JsonConvert.DeserializeObject<List<MissionsMVC>>(responseString);
 
             return View(missionsMVCs);
@@ -26,7 +26,7 @@ namespace MosadMVC.Controllers
         // הצגת משימה ספציפית
         public async Task<IActionResult> Details(int id)
         {
-            var responseString = await _httpClient.GetStringAsync($"http://localhost:5094/api/missions/{id}");
+            var responseString = await _httpClient.GetStringAsync($"http://localhost:5094/missions/{id}");
             Missoion missoion = JsonConvert.DeserializeObject<Missoion>(responseString);
 
             return View(missoion);
@@ -36,7 +36,7 @@ namespace MosadMVC.Controllers
         // ציוות משימה בפועל
         public async Task<IActionResult> connect(int id)
         {
-            _httpClient.PutAsJsonAsync($"http://localhost:5094/api/missions/{id}", "{ “status”: “assigned”}");
+            _httpClient.PutAsJsonAsync($"http://localhost:5094/missions/{id}", "{ “status”: “assigned”}");
 
 
             return RedirectToAction("Index");
